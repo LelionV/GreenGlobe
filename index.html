@@ -1026,8 +1026,9 @@
 <div class="modal" id="donationModal">
     <div class="modal-content">
         <div class="modal-header">
+            <span class="heart-badge">❤️</span>
             <h3>Support Our Cause</h3>
-            <p>Your contribution makes a difference</p>
+            <p>Every donation helps us make a real impact on the environment.</p>
         </div>
 
         <div class="input-group">
@@ -1048,17 +1049,19 @@
 </div>
 
 <script>
-// --- Modal Logic ---
 document.addEventListener('DOMContentLoaded', function () {
     const donateBtn = document.getElementById('nav-donate-btn');
     const modal = document.getElementById('donationModal');
     const modalContent = modal.querySelector('.modal-content');
 
-    donateBtn.addEventListener('click', function(e) {
+    // Open modal when clicking donate
+    donateBtn.addEventListener('click', function (e) {
         e.preventDefault();
         modal.style.display = 'flex';
+        modal.style.zIndex = '9999'; // ensure it comes to front
     });
 
+    // Close modal when clicking outside modal content
     document.addEventListener('click', function(e) {
         const target = e.target;
         if (modal.style.display === 'flex' && !modalContent.contains(target) && target !== donateBtn) {
@@ -1068,14 +1071,15 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function closeModal() {
-    document.getElementById('donationModal').style.display = 'none';
+    const modal = document.getElementById('donationModal');
+    modal.style.display = 'none';
 }
 
-// --- Paystack Payment ---
+// Paystack payment
 function payWithPaystack() {
     let name = document.getElementById('name').value.trim();
     let email = document.getElementById('email').value.trim();
-    let amount = parseFloat(document.getElementById('amount').value) * 100; // KES to kobo
+    let amount = parseFloat(document.getElementById('amount').value) * 100;
 
     if (!name || !email || !amount || amount <= 0) {
         alert("Please fill all fields with valid values");
@@ -1083,7 +1087,7 @@ function payWithPaystack() {
     }
 
     let handler = PaystackPop.setup({
-        key: 'pk_test_d7951d7e38ba53250f4b90ea3a68a5df0e5607b6', // replace with your public key
+        key: 'pk_test_d7951d7e38ba53250f4b90ea3a68a5df0e5607b6', // replace with your key
         email: email,
         amount: amount,
         currency: 'KES',
@@ -1802,7 +1806,6 @@ function payWithPaystack() {
                         <li><a href="#impact-section">Our Impact</a></li> 
                         <li><a href="#resources-section">Resources</a></li>
                         <li><a href="#fullpage-contact">Contact</a></li>
-                        <li><a href="#" id="nav-donate-btn">Donate</a></li>
                     </ul>
                 </div>
             </div>
