@@ -885,17 +885,22 @@
         }
 
         .logo {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* space between image and text */
-    text-decoration: none;
-}
+            display: flex;
+            align-items: center;
+            gap: 8px; /* space between image and text */
+            text-decoration: none;
+        }
 
-.logo-img {
-    width: 70px;   /* adjust size as needed */
-    height: 70px;
-    object-fit: contain;
-}
+        .logo-img {
+            width: 70px;   /* adjust size as needed */
+            height: 70px;
+            object-fit: contain;
+        }
+        .footer_logo-img {
+            width: 140px;   /* adjust size as needed */
+            height: 140px;
+            object-fit: contain;
+        }
 
         .modal {
             display: none;
@@ -1794,7 +1799,9 @@ function payWithPaystack() {
         <footer>
             <div class="footer-container">
                 <div class="footer-about">
-                    <a href="#hero" class="footer-logo">GREEN Globe Guardian</a>
+                    <a href="#hero" class="logo">
+                        <img src="Guardian-logo.png" alt="Green Globe Guardian Logo" class="footer_logo-img">
+                    </a>
                     <p>Committed to protecting nature, preserving ecosystems, and building a sustainable future.</p>
                 </div>
                 <div class="footer-links">
